@@ -2,28 +2,71 @@
 <html>
   <head>
     <title>bored @ barnard</title>
+    <link rel="icon" href="at.jpg">
+ 
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        box-sizing: border-box;
+      }
+
+      #title {
+        font-weight: 700;
+        font-size: 50pt;
+        font-family: "Courier New", Courier, monospace; 
+      }
+
+      form {
+        padding: 3px;
+      }
+
+      input {
+        width: 90%;
+        height: 50px;
+        margin-right: 1.5%;
+        font-size: 20pt;
+      }
+
+      #messages {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 10pt;
+      }
+
+      #messages li {
+        padding: 10px 10px;
+      }
+
+      #messages li:nth-child(odd) {
+        background: #eee;
+      }
 
 
-
-
+    /*  * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; max-width: 500px}
       form { background: #000; padding: 3px; bottom: 0; }
       form input { border: 0; padding: 10px; width: 90%; margin-right: 1%; }
       form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 10px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
       #messages { margin-bottom: 40px }
+*/
+
+
+
+
     </style>
   </head>
   <body>
-    <center> <h1> Bored at Barnard </h1>
-    <ul id="messages"></ul>
+    <h1 align='center' id='title'> Bored @ Barnard </h1>
+
+
+   <ul id="messages"></ul>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
-    </form> </center>
+    </form>
+
+
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
@@ -34,7 +77,7 @@
           $('#m').val('');
           return false;
         });
-		let myname = prompt('enter ur name noow!!!!!')
+		let myname = prompt('Welcome to Bored @ Barnard, for procrastination and collaboration!\nPlease enter your chat name:')
 		socket.emit('change name', myname);
         socket.on('chat message', function(obj){
 		  user = obj.user;
