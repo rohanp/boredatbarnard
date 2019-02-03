@@ -30,8 +30,11 @@
           $('#m').val('');
           return false;
         });
-        socket.on('chat message', function(msg){
-          $('#messages').append($('<li>').text(msg));
+        socket.on('chat message', function(obj){
+		  user = obj.user;
+		  msg = obj.message;
+		  var message = $(`<li> ${user}: ${msg} </li>`)
+          $('#messages').append(message);
           window.scrollTo(0, document.body.scrollHeight);
         });
       });
