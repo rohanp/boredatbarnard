@@ -11,9 +11,13 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
   let name = nameGen.choose();
-  socket.on('chat message', function(msg){
-    io.emit('chat message', {user: name, message: msg});
-  });
+  	socket.on('chat message', function(msg){
+    	io.emit('chat message', {user: name, message: msg});
+  	});
+
+	socket.on('change name', name_ => {
+		name = name_
+	});
 });
 
 http.listen(port, function(){

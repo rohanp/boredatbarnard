@@ -30,6 +30,8 @@
           $('#m').val('');
           return false;
         });
+		let myname = prompt('enter ur name noow!!!!!')
+		socket.emit('change name', myname);
         socket.on('chat message', function(obj){
 		  user = obj.user;
 		  msg = obj.message;
