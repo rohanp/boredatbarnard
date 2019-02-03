@@ -62,7 +62,6 @@
 
   <body>
     <h1 align='center' id='title'> Bored @ Barnard </h1>
-    <img src='barnard.png' align='center' width='500px'>
 
     <ul id="messages"></ul>
     <form action="">
@@ -86,8 +85,10 @@
       $(function () {
         var socket = io();
         $('form').submit(function(){
-          socket.emit('chat message', $('#m').val());
-          $('#m').val('');
+          if($("#m").val().length != 0) {
+	  socket.emit('chat message', $('#m').val());
+	  $('#m').val('');
+	  }
           return false;
         });
 		let myname = prompt('Welcome to Bored @ Barnard, for procrastination and collaboration!\nPlease enter your chat name:')
