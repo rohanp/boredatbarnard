@@ -93,6 +93,8 @@
         });
 		let myname = prompt('Welcome to Bored @ Barnard, for procrastination and collaboration!\nPlease enter your chat name:')
 		socket.emit('change name', myname);
+		console.log("A PERSON HAS ENTERED THE BUILDING. CALL THE POLICE.");
+		$("#messages").append(myname + " has joined the chat.");
         socket.on('chat message', function(obj){
 		  user = obj.user;
 		  msg = obj.message;
